@@ -6,7 +6,14 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
+// Vuetify
+import 'vuetify/styles';
+import '@mdi/font/css/materialdesignicons.css';
+import { createVuetify } from 'vuetify';
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+
+const vuetify = createVuetify();
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -19,6 +26,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(vuetify)
             .mount(el);
     },
     progress: {
